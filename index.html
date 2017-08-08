@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CAPSTONE</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sedgwick+Ave" rel="stylesheet">
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBio1A1QE6PdvUVvkDox_aLUvRcjeYISVk&callback=initMap">
+    </script>
+</head>
+<body>
+
+<header>
+
+	<p class='med'>Find Something</p>
+	<p class='large'>Fun To Do Today</p>
+
+	<h1>Search Now</h1>
+
+	<form id='form'>
+		<input type="text" id="zipcode" placeholder="Enter Zip Code" required> </input>
+		<button class='search-btn' type="submit">Search</button>
+	</form>
+
+	<div class= 'row'>
+		<div class= 'col-12' id="textslide"><p></p></div>
+	</div>
+</header>
+
+<main>
+
+	<div class="row">
+		<div class= 'col-12' id = 'weather'></div>
+	</div>
+
+
+	<div class = 'row'>
+		<div class= 'col-12' id = 'activity-list'></div>
+	</div>
+
+
+	<div class = 'row main'>
+		<div class= 'col-4' id = 'results'></div>
+		<div class= 'col-6' id = 'map'></div>
+	</div>
+
+</main>
+
+<div class= 'row'>
+	<footer class= 'col-12'>
+		<p class='newsearch'><em>New Search</em></p>
+	</footer>
+</div>
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
+

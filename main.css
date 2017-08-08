@@ -1,0 +1,193 @@
+* {
+	box-sizing: border-box;	
+}
+body {
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans Condensed', helvetica;
+	margin: 0;
+	background: #314755;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #26a0da, #314755);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #26a0da, #314755); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	color: #F5F5F5;
+}
+
+header {
+	margin: 0;
+	height: 80vh;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+header p {
+	float: left;
+	clear: both;
+	line-height: 2px;
+	margin: 35px;
+	color: #F5F5F5;
+}
+
+.med {
+	font-size: 50px;
+}
+
+.large {
+	font-size: 65px;
+}
+
+main {
+	text-align: center;
+}
+
+h1, h2{
+	letter-spacing: 10px;
+
+}
+
+h1 {
+	margin-top: 20px;
+	padding-top: 150px;
+	font-size: 60px
+	color: #F5F5F5;
+}
+
+h2{
+	margin: 0;
+	font-size: 35px;
+	text-transform: uppercase;
+	color: 	color: #F5F5F5;
+}
+form {
+	margin-top: 100px;
+}
+#zipcode {
+	border-radius: 10px;
+	font-size: 25px;
+	color: #3f8fcc;
+	padding: 5px;
+	text-align: center;
+	width: 400px;
+	height: 60px;
+	margin-left: 15px;
+}
+
+#weather, #activity-list, #map,  footer, .main, #results  {
+	display: none;
+	text-transform: uppercase;
+}
+
+#weather {
+	margin: 10px auto;
+	font-size: 18px;
+}
+
+#results, #map{ 
+	height: 400px;
+	background-color: #F5F5F5;
+	color: #26a0da;
+	margin: 0 20px;
+ }
+#activity-list ul li {
+	display: inline-block;
+	font-size:  25px;
+	margin: 0 20px;
+	letter-spacing: 5px;
+}
+
+#results {
+	overflow: auto;
+}
+footer {
+	text-align: center;
+}
+
+ul {
+	padding: 0;
+	list-style: none;
+}
+
+
+#activities-list p {
+	font-size: 18px;
+}
+
+.image-icon, .location-info {
+	font-weight: bold;
+	font-size: 30px;
+	margin-top: 10px;
+	letter-spacing: 10px;
+	color: #F5F5F5;
+}
+
+.search-btn {
+	margin-left: 15px;
+	width: 200px;
+	height: 60px;
+	font-size: 25px;
+	background-color: #F5F5F5; 
+	color: #26a0da;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 0;
+}
+
+#textslide{
+	font-size: 80px;
+	text-transform: uppercase;
+	margin-top: 100px;
+	color: #928DAB;
+}
+
+.newsearch{
+	font-size: 40px;
+	bottom: 100px;
+}
+
+#movies, #pools {
+display: none;
+}
+
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid #26a0da;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #26a0da;  
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #26a0da;  
+}
+
+
+/*
+**********************GRID**************************************/
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
