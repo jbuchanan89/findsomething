@@ -3,13 +3,13 @@
 			min: 85,
 			max: 1000,
 			activities: [
-			'beaches','pools', 'parks', 'museums', 'playgrounds']
+			'beaches','pools', 'parks', 'museums', 'playgrounds', 'amusement park']
 		},
 		{
 			min: 0,
 			max: 84,
 			activities: [
-			'movies', 'bowling', 'roller skating', 'ice skating', 'museums']
+			'movies', 'bowling', 'roller skating', 'ice skating', 'museums', 'trampoline park']
 		}
 	];
 
@@ -48,10 +48,8 @@ var map;
 
 //**********Click events for the Activities*********
 		$("#activity-list").on('click', '.movies', function(e){
-		// create a click listener to pull data from Google api for movie theatres
-		activity= 'movie theatres';
+		activity= 'movie theatres';	
 		getActivities(activity);
-
 		});
 
 		$("#activity-list").on('click', '.pools', function(e){
@@ -89,8 +87,18 @@ var map;
 		getActivities(activity);
 		});
 
-		$("#activity-list").on('click', '.playground', function(e){
+		$("#activity-list").on('click', '.playgrounds', function(e){
 		activity= 'playground';
+		getActivities(activity);
+		});
+
+		$("#activity-list").on('click', '.amusement', function(e){
+		activity= 'amusement park';
+		getActivities(activity);
+		});
+
+		$("#activity-list").on('click', '.trampoline', function(e){
+		activity= 'trampoline park';
 		getActivities(activity);
 		});
 		//*******************************
@@ -105,10 +113,9 @@ var map;
 		var currentTemp= data.current_observation.temp_f;
 		var location = data.current_observation.display_location.full;
 		var icon = data.current_observation.icon;
-		var res= icon.toLowerCase();
-		var image= res.split(' ').join('');
+		var weath= data.current_observation.weather;
 
-			$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+image+'.gif"><br>'+icon+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
+			$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
 
 			var activitiesHTML = "<ul>";
 			for (var i = 0; i < weatherRules.length; i++) {
@@ -136,23 +143,30 @@ function getGeoCode() {
 
 	function getActivities(activity){
 		$('#results').empty();
-		googleAPI= 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+lat+','+lon+'&radius=100&query='+activity+'&key=AIzaSyBio1A1QE6PdvUVvkDox_aLUvRcjeYISVk';
+		$('#map').empty();
+		googleAPI= 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+lat+','+lon+'&radius=500&query='+activity+'&key=AIzaSyAJ_wq_D6Grboah9szVhRr71p5uN2PsbtU';
 
-		/*
+		map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: new google.maps.LatLng(lat,lon),
+        mapTypeId: 'roadmap'
+        });
+		
 
-			$.ajax({
-				method: 'GET',
-				url: googleAPI,
-				dataType: 'jsonp',
-				crossOrigin: true,
-				success: function(data){
-					
-				}
-			})
-		*/
+			// $.ajax({
+			// 	method: 'GET',
+			// 	url: googleAPI,
+			// 	dataType: 'jsonp',
+			// 	crossOrigin: true,
+			// 	success: function(data){
+			// 		console.log('success');
+			// 	}
+			// })
+		
+
 		$.getJSON(googleAPI).done(function(data){
 			$("#results").css('display', 'block');
-			$('#results').html('<h2>'+activity+'</h2>')
+			$('#results').html('<h2>'+activity+'</h2>');
 	   	for(var i =0; i<data.results[i].name.length; i++){
 	   		var marker = new google.maps.Marker ({
 		    	position: new google.maps.LatLng(data.results[i].geometry.location.lat,data.results[i].geometry.location.lng),
@@ -160,17 +174,15 @@ function getGeoCode() {
 		    	title: data.results[i].name
 		    });
 	    	$("#results").append('<p>'+data.results[i].name+'<br>'+data.results[i].formatted_address+'<br>'+data.results[i].rating+'&#9733</p>');
-
-	  //   	$('html, body').animate({
-			// scrollTop: $("#results").offset().top -300
-		 //   }, 1000);
-
 	     };
 
 	});
-	}
+	};
+
+
 
 function initMap(lat,lon) {
+
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: new google.maps.LatLng(lat,lon),
@@ -179,8 +191,11 @@ function initMap(lat,lon) {
     var marker = new google.maps.Marker ({
     	position: new google.maps.LatLng(lat,lon),
     	map: map,
+    	animation: google.maps.Animation.DROP,
     	title: 'You are Here'
     });
+
+
 }
 
 
