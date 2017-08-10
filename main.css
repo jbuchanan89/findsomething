@@ -10,16 +10,16 @@ body {
 	background: -webkit-linear-gradient(to right, #26a0da, #314755);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, #26a0da, #314755); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	color: #F5F5F5;
+	text-transform: uppercase;
 }
 
 header {
 	margin: 0;
-	height: 80vh;
 	text-align: center;
-	text-transform: uppercase;
 }
 
-header p {
+header p, 
+#weather .logo {
 	float: left;
 	clear: both;
 	line-height: 2px;
@@ -39,26 +39,24 @@ main {
 	text-align: center;
 }
 
-h1, h2{
-	letter-spacing: 10px;
-
-}
-
 h1 {
-	margin-top: 20px;
+	margin-top: 40px;
 	padding-top: 150px;
 	font-size: 60px
 	color: #F5F5F5;
+	letter-spacing: 20px;
 }
 
 h2{
 	margin: 0;
 	font-size: 35px;
-	text-transform: uppercase;
+	letter-spacing: 10px;
 }
+
 form {
 	margin-top: 100px;
 }
+
 #zipcode {
 	border-radius: 10px;
 	font-size: 25px;
@@ -67,12 +65,16 @@ form {
 	text-align: center;
 	width: 400px;
 	height: 60px;
-	margin-left: 15px;
+	margin: 0 15px;
 }
 
-#weather, #activity-list, #map,  footer, .main, #results  {
+#weather, 
+#activity-list, 
+#map,  
+footer, 
+.main, 
+#results  {
 	display: none;
-	text-transform: uppercase;
 }
 
 #weather {
@@ -80,13 +82,18 @@ form {
 	font-size: 18px;
 }
 
-#results, #map{ 
+#results, 
+#map{ 
 	height: 400px;
 	background-color: #F5F5F5;
 	color: #26a0da;
 	margin: 0 20px;
  }
 
+a {
+	text-decoration: none;
+	color: #26a0da
+}
 #activity-list ul li {
 	display: inline-block;
 	font-size:  25px;
@@ -97,8 +104,6 @@ form {
 li:hover {
 	cursor: pointer;
 }
-
-
 
 #results {
 	overflow: auto;
@@ -119,14 +124,20 @@ ul {
 	font-size: 18px;
 }
 
-.image-icon, .location-info {
+.image-icon, 
+.location-info {
 	font-weight: bold;
 	font-size: 30px;
 	margin-top: 10px;
 	letter-spacing: 10px;
 	color: #F5F5F5;
+
 }
 
+.image-icon {
+
+		padding-top: 150px;
+}
 .search-btn {
 	margin-left: 15px;
 	width: 200px;
@@ -136,12 +147,11 @@ ul {
 	color: #26a0da;
 	border-radius: 10px;
 	padding: 5px;
-	margin: 0;
+	margin: 0 15px;
 }
 
 #textslide{
 	font-size: 80px;
-	text-transform: uppercase;
 	margin-top: 100px;
 	color: #928DAB;
 }
@@ -151,7 +161,8 @@ ul {
 	bottom: 100px;
 }
 
-#movies, #pools {
+#movies, 
+#pools {
 display: none;
 }
 
@@ -200,9 +211,3 @@ background: #26a0da;
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 
-@media (max-width: 500px;) {
-
-	body {
-		background: red;
-	}
-}

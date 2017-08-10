@@ -3,11 +3,11 @@
 			min: 85,
 			max: 1000,
 			activities: [
-			'beaches','pools', 'parks', 'museums', 'playgrounds', 'amusement park']
+			'beaches','pools', 'parks', 'museums', 'playgrounds', 'amusement park', 'water sports']
 		},
 		{
 			min: 0,
-			max: 84,
+			max: 85,
 			activities: [
 			'movies', 'bowling', 'roller skating', 'ice skating', 'museums', 'trampoline park']
 		}
@@ -22,6 +22,9 @@ var weatherSearch;
 var googleAPI;
 var activity;
 var map;
+var map;
+var service;
+var infowindow;
 
 	$(document).ready(function(){
 		$('#form').submit(function(event){
@@ -50,6 +53,7 @@ var map;
 		$("#activity-list").on('click', '.movies', function(e){
 		activity= 'movie theatres';	
 		getActivities(activity);
+
 		});
 
 		$("#activity-list").on('click', '.pools', function(e){
@@ -101,6 +105,11 @@ var map;
 		activity= 'trampoline park';
 		getActivities(activity);
 		});
+
+		$("#activity-list").on('click', '.water', function(e){
+		activity= 'water sports';
+		getActivities(activity);
+		});
 		//*******************************
 	});
 
@@ -114,7 +123,7 @@ var map;
 		var location = data.current_observation.display_location.full;
 		var icon = data.current_observation.icon;
 		var weath= data.current_observation.weather;
-
+			$('#weather').append("<p class='logo med'>Find Something</p><p class='logo large'>Fun To Do Today</p>");
 			$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
 
 			var activitiesHTML = "<ul>";
@@ -129,7 +138,7 @@ var map;
 
 			$('#activity-list').append(activitiesHTML);
 		 });	
-	};
+	}
 
 //*************************************************
 
@@ -139,47 +148,19 @@ function getGeoCode() {
 		lon = data.location.lon;
 		initMap(lat,lon);
 		});
-	};
+}
 
-	function getActivities(activity){
-		$('#results').empty();
-		$('#map').empty();
-		googleAPI= 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+lat+','+lon+'&radius=500&query='+activity+'&key=AIzaSyAJ_wq_D6Grboah9szVhRr71p5uN2PsbtU';
+var name;
+function getActivities(activity){
+	$('html, body').animate({
+	scrollTop: $("#results").offset().top -100
+	}, 2000);
 
-		map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: new google.maps.LatLng(lat,lon),
-        mapTypeId: 'roadmap'
-        });
-		
-
-			// $.ajax({
-			// 	method: 'GET',
-			// 	url: googleAPI,
-			// 	dataType: 'jsonp',
-			// 	crossOrigin: true,
-			// 	success: function(data){
-			// 		console.log('success');
-			// 	}
-			// })
-		
-
-		$.getJSON(googleAPI).done(function(data){
-			$("#results").css('display', 'block');
-			$('#results').html('<h2>'+activity+'</h2>');
-	   	for(var i =0; i<data.results[i].name.length; i++){
-	   		var marker = new google.maps.Marker ({
-		    	position: new google.maps.LatLng(data.results[i].geometry.location.lat,data.results[i].geometry.location.lng),
-		    	map: map,
-		    	title: data.results[i].name
-		    });
-	    	$("#results").append('<p>'+data.results[i].name+'<br>'+data.results[i].formatted_address+'<br>'+data.results[i].rating+'&#9733</p>');
-	     };
-
-	});
-	};
-
-
+	$('#results').empty();
+	$('#map').empty();
+	googleAPI= 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+lat+','+lon+'&radius=500&query='+activity+'&key=AIzaSyAJ_wq_D6Grboah9szVhRr71p5uN2PsbtU';
+	initialize();
+}
 
 function initMap(lat,lon) {
 
@@ -194,7 +175,76 @@ function initMap(lat,lon) {
     	animation: google.maps.Animation.DROP,
     	title: 'You are Here'
     });
+    var infowindow = new google.maps.InfoWindow({
+    	content: "You are Here"
+  	});
 
+ 	 marker.addListener('click', function() {
+   		infowindow.open(map, marker);
+  	});
+};
+
+function initialize() {
+  var placeLocation = new google.maps.LatLng(lat,lon);
+
+  map = new google.maps.Map(document.getElementById('map'), {
+      center: placeLocation,
+      zoom: 10
+    });
+
+  var request = {
+    location: placeLocation,
+    radius: '100',
+    query: activity
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
+}
+var string;
+var address;
+function callback(results, status) {
+	$('#results').css('display', 'block');
+	$('#results').html('<h2>'+activity+'</h2>');
+  	if (status == google.maps.places.PlacesServiceStatus.OK) {
+    	for (var i = 0; i < results.length; i++) {
+    		console.log(results[i]);
+      		var place = results[i];
+			string = results[i].formatted_address;
+			address = string.replace(', United States', "");
+			createMarker(results[i], address);
+			var result = '<p>'+results[i].name+'<br>'+address+'<br>'+results[i].rating+' &#9733</p>';
+  			$("#results").append(result);
+    	}
+  	}
+}
+
+function createMarker(place, address) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
+
+    var infoWindow = new google.maps.InfoWindow({    
+  	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+		 infoWindow.close();
+    	service.getDetails(place, function(result, status) {
+      		if (status !== google.maps.places.PlacesServiceStatus.OK) {
+        		console.error(status);
+        		return;
+      		}	
+      	console.log(result);
+      infoWindow.setContent('<a href="https://www.google.com/maps/place/'+result.name+'/ " target="_blank"><strong>'+result.name+ '</strong><br/>' + address + "</a>");
+      infoWindow.open(map, marker);
+      map.setCenter(marker.getPosition())
+    	});
+	});	
+	google.maps.event.addListener(map, "click", function(event) {
+    infoWindow.close();
+});
 
 }
 
