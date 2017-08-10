@@ -158,7 +158,6 @@ function getActivities(activity){
 
 	$('#results').empty();
 	$('#map').empty();
-	googleAPI= 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='+lat+','+lon+'&radius=500&query='+activity+'&key=AIzaSyAJ_wq_D6Grboah9szVhRr71p5uN2PsbtU';
 	initialize();
 }
 
@@ -213,8 +212,9 @@ function callback(results, status) {
 			string = results[i].formatted_address;
 			address = string.replace(', United States', "");
 			createMarker(results[i], address);
-			var result = '<p>'+results[i].name+'<br>'+address+'<br>'+results[i].rating+' &#9733</p>';
+			var result = '<p><strong>'+results[i].name+'</strong><br>'+address+'<br>'+results[i].rating+' &#9733</p>';
   			$("#results").append(result);
+
     	}
   	}
 }
@@ -236,9 +236,10 @@ function createMarker(place, address) {
         		console.error(status);
         		return;
       		}	
-      	console.log(result);
-      infoWindow.setContent('<a href="https://www.google.com/maps/place/'+result.name+'/ " target="_blank"><strong>'+result.name+ '</strong><br/>' + address + "</a>");
+      	console.log(result[i]);
+      infoWindow.setContent('<a href="https://www.google.com/maps/place/'+result.name+'/@'+placeLoc+'" target="_blank"><strong>'+result.name+ '</strong><br/>' + address + "</a>");
       infoWindow.open(map, marker);
+      zoom: 12
       map.setCenter(marker.getPosition())
     	});
 	});	
