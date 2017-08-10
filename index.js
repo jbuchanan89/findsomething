@@ -31,8 +31,8 @@ var infowindow;
 			event.preventDefault();
 			$('#weather, #activity-list, #map, footer, .main, #results').css('display', 'block');
 			var query= $('#zipcode').val();
-			weatherSearch = 'http://api.wunderground.com/api/66932217fc7ece0f/conditions/q/'+query+'.json';
-			geoLookup = "http://api.wunderground.com/api/66932217fc7ece0f/geolookup/q/"+query+".json";
+			weatherSearch = 'https://api.wunderground.com/api/66932217fc7ece0f/conditions/q/'+query+'.json';
+			geoLookup = "https://api.wunderground.com/api/66932217fc7ece0f/geolookup/q/"+query+".json";
 			$('#weather, #activity-list').empty();
 			$('html, body').animate({
 				scrollTop: $("#weather").offset().top -600
