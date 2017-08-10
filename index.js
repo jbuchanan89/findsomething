@@ -212,7 +212,7 @@ function callback(results, status) {
 			string = results[i].formatted_address;
 			address = string.replace(', United States', "");
 			createMarker(results[i], address);
-			var result = '<p><strong>'+results[i].name+'</strong><br>'+address+'<br>'+results[i].rating+' &#9733</p>';
+			var result = '<p><a href="https://www.google.com/maps/place/'+results[i].name+'/@'+results[i].geometry.location+'" target="_blank"><strong>'+results[i].name+'</strong></a><br>'+address+'<br>'+results[i].rating+' &#9733</p>';
   			$("#results").append(result);
 
     	}
