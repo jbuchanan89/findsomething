@@ -124,13 +124,14 @@ form {
 	font-size:  25px;
 	margin: 0 20px;
 	letter-spacing: 5px;
-	padding: 5px;
+	padding: 10px;
 }
 
 li:hover {
 	cursor: pointer;
 	background-color: lightgrey;
 	color: #26a0da;
+	font-weight: bold;
 }
 
 #textslide{
