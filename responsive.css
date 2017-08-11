@@ -1,33 +1,39 @@
-@media (max-width: 1250px) {
+@media (max-width: 1240px) {
 
 	* {
 		box-sizing: border-box;
 	}
-	#results, #map {
-		width: 95%;
-		margin: 15px;
+
+
+
+	/*
+***************Landing Page****************/
+	header {
+		padding-top: 80px; 
 	}
 
-	.row {
-		width: 100%;
-		margin: 0;
-	}
-
-	.med {
-		float: none;
-		margin-top: 50px;
-		font-size: 80px;
-	}
-
-	.large {
-		float: none;
-		margin-top: 50px;
+	header .med {
 		font-size: 40px;
+	}
+
+	header .large {
+		font-size: 55px;
+		margin-top: 100px;
+	}
+
+	h1 {
+		font-size: 30px;
+		margin-top: 20px;
+		padding: 30px;
+	}
+
+	form {
+		margin-top: 30px;
 	}
 
 	.search-btn, #zipcode {
 	font-size: 20px;
-	margin: 10px auto;
+	margin: 20px auto;
 	width: 350px;
 	height: 60px;
 	display: block;
@@ -35,7 +41,31 @@
 
 	#textslide{
 	font-size: 30px;
+	margin-top: 20px;
 	}
+
+/*********Main Page/Shows Weather and Results********/
+	.row {
+		width: 100%;
+	}
+
+	#results, #map {
+		width: 95%;
+		margin-top: 15px;
+	}
+
+	.med {
+		float: none;
+		margin-top: 50px;
+	}
+
+	.large {
+		float: none;
+		margin-top: 50px;
+		margin-bottom: 80px;
+	}
+
+
 
 	#activity-list ul li {
 	display: block;
@@ -66,31 +96,16 @@
 		font-size: 22px;
 	}
 
-	h1 {
-		font-size: 22px;
-		margin-top: 20px;
-		padding: 30px;
-	}
-
-	form {
-		margin-top: 30px;
-	}
-
-	header {
-		padding-top: 200px; 
-	}
 
 
 @media (max-width: 500px) {
 		#weather .logo, 
-		.large, 
-		.med{
+		{
 			font-size: 30px;
 			margin-top: 30px;
 		}
 
 	#results, #map {
 		width: 95%;
-		margin: 15px;
 	}
 }
