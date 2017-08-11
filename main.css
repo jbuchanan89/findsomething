@@ -13,6 +13,9 @@ body {
 	text-transform: uppercase;
 }
 
+.main {
+	margin: 0;
+}
 header {
 	margin: 0;
 	text-align: center;
@@ -26,6 +29,7 @@ header p,
 	margin: 35px;
 	color: #F5F5F5;
 }
+
 
 .med {
 	font-size: 40px;
@@ -87,7 +91,7 @@ footer,
 	height: 400px;
 	background-color: #F5F5F5;
 	color: #26a0da;
-	margin: 0 20px;
+	margin: 0 20px 0 30px;
  }
 
 a {
@@ -131,7 +135,6 @@ ul {
 	margin-top: 10px;
 	letter-spacing: 10px;
 	color: #F5F5F5;
-
 }
 
 .image-icon {
