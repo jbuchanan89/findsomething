@@ -124,7 +124,7 @@ var infowindow;
 		var icon = data.current_observation.icon;
 		var weath= data.current_observation.weather;
 			$('#weather').append("<p class='logo med'>Find Something</p><p class='logo large'>Fun To Do Today</p>");
-			$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
+			$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"alt="Image Icon for the current weather"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
 
 			var activitiesHTML = "<ul>";
 			for (var i = 0; i < weatherRules.length; i++) {
