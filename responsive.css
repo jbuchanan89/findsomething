@@ -42,6 +42,7 @@
 	#textslide{
 	font-size: 30px;
 	margin-top: 20px;
+	margin-bottom: 30px;
 	}
 
 /*********Main Page/Shows Weather and Results********/
@@ -94,18 +95,6 @@
 	h2 {
 		font-size: 22px;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @media (max-width: 350px) {
