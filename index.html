@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" media="(max-width: 1240px)" href="responsive.css" >
 	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sedgwick+Ave" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fredoka+One|PT+Sans+Caption" rel="stylesheet">	<link href="https://fonts.googleapis.com/css?family=Archivo+Black|PT+Sans+Caption" rel="stylesheet">
         <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ_wq_D6Grboah9szVhRr71p5uN2PsbtU&libraries=places&callback=initMap">
     </script>
@@ -15,18 +15,14 @@
 <body>
 
 <header>
-	<p class='med'>Find Something</p>
-	<p class='large'>Fun To Do Today</p>
-	<h1>Search Now</h1>
+	<h1 class='med'>Find Something to do <br> based on your current weather</h1>
+	<p class = 'med second'> What is your location?</p>
 
 	<form id='form'>
-		<input type="text" id="zipcode" placeholder="Enter Zip Code" required> </input>
+		<input type="text" id="zipcode" placeholder="Zip Code" required> </input>
 		<button class='search-btn' type="submit">Search</button>
 	</form>
 
-	<div class= 'row'>
-		<div class= 'col-12' id="textslide"><p></p></div>
-	</div>
 </header>
 
 <main>
@@ -53,7 +49,7 @@
 
 <div class= 'row'>
 	<footer class= 'col-12'>
-		<p class='newsearch'>New Search</p>
+		<button class='newSearch'>New Search</button>
 	</footer>
 </div>
 

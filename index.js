@@ -20,7 +20,6 @@ var lon;
 var options;
 var weatherSearch;
 var googleAPI;
-var activity;
 var map;
 var map;
 var service;
@@ -29,22 +28,21 @@ var infowindow;
 	$(document).ready(function(){
 		$('#form').submit(function(event){
 			event.preventDefault();
-			$('#weather, #activity-list, #map, footer, .main, #results').css('display', 'block');
+
 			var query= $('#zipcode').val();
 			weatherSearch = 'https://api.wunderground.com/api/66932217fc7ece0f/conditions/q/'+query+'.json';
 			geoLookup = "https://api.wunderground.com/api/66932217fc7ece0f/geolookup/q/"+query+".json";
 			$('#weather, #activity-list').empty();
-			$('html, body').animate({
-				scrollTop: $("#weather").offset().top -600
-		   }, 2000);
 			
 			getWeather(weatherSearch);
+			$('#weather, #activity-list, #map, footer, .main, #results').css('display', 'block');
+			$('body').css('border', '10px solid #26a0da');
 			$('header').css('display','none');
 			getGeoCode();
 
 		});	
 
-		$("footer").on('click', '.newsearch',function(e){
+		$("footer").on('click', '.newSearch',function(e){
 			location.reload();
 		});
 
@@ -123,6 +121,7 @@ var infowindow;
 		var location = data.current_observation.display_location.full;
 		var icon = data.current_observation.icon;
 		var weath= data.current_observation.weather;
+
 			$('#weather').append("<p class='logo med'>Find Something</p><p class='logo large'>Fun To Do Today</p>");
 			$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"alt="Image Icon for the current weather"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
 
@@ -154,7 +153,7 @@ var name;
 function getActivities(activity){
 	$('html, body').animate({
 	scrollTop: $("#results").offset().top -100
-	}, 2000);
+	}, 1000);
 
 	$('#results').empty();
 	$('#map').empty();
@@ -164,7 +163,7 @@ function getActivities(activity){
 function initMap(lat,lon) {
 
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
+        zoom: 5,
         center: new google.maps.LatLng(lat,lon),
         mapTypeId: 'roadmap'
         });
@@ -188,7 +187,7 @@ function initialize() {
 
   map = new google.maps.Map(document.getElementById('map'), {
       center: placeLocation,
-      zoom: 10
+      zoom: 8
     });
 
   var request = {
@@ -236,10 +235,9 @@ function createMarker(place, address) {
         		console.error(status);
         		return;
       		}	
-      	console.log(result[i]);
       infoWindow.setContent('<a href="https://www.google.com/maps/place/'+result.name+'/@'+placeLoc+'" target="_blank"><strong>'+result.name+ '</strong><br/>' + address + "</a>");
       infoWindow.open(map, marker);
-      zoom: 12
+      zoom: 10
       map.setCenter(marker.getPosition())
     	});
 	});	
@@ -248,29 +246,3 @@ function createMarker(place, address) {
 });
 
 }
-
-
-//*********Text Slide Show***********
-var places = [
-"pools", 
-"museums", 
-"beaches", 
-"movie theatres",
-"trampoline parks",
-"theme parks",
-"roller skating",
-"ice skating",
-"bowling"
-];
-    var i = 0;
-    setInterval(function() {
-       $("#textslide").html(places[i]);
-            if (i == places.length)
-             	i=0;
-            else
-                i++;
-        }, 1 * 2000);
-
-//********************************
-
-

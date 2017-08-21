@@ -2,15 +2,14 @@
 body {
 	width: 100%;
 	height: 100%;
-	font-family: 'Open Sans Condensed', helvetica;
+	font-family: 'PT Sans Caption', sans-serif;
 	margin: 0;
-	background: #314755;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #26a0da, #314755);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #26a0da, #314755); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	color: #F5F5F5;
+	background: #efeff2;
+	color: #26a0da;
 	text-transform: uppercase;
 	text-align: center;
-		box-sizing: border-box;
+	box-sizing: border-box;
+
 }
 
 #weather, 
@@ -27,67 +26,71 @@ footer,
 header {
 	margin: 0;
 	text-align: center;
+	background: url("https://static.pexels.com/photos/5151/man-people-walking-park.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  	background-size: cover;
+	height: 100vh;
+	width: 100%;
+	opacity: 0.8;
 }
 
-header p {
-	float: left;
-	clear: both;
-	line-height: 2px;
-	margin: 35px;
-	color: #F5F5F5;
-}
 
 header .med {
-	font-size: 40px;
+	font-size: 30px;
+	color: #F5F5F5;
+	font-weight: normal;
 }
 
-header .large {
-	font-size: 55px;
-}
 
 h1 {
-	margin-top: 40px;
+	color: #26a0da;
+	font-weight: bold;
 	padding-top: 150px;
-	font-size: 60px
-	color: #F5F5F5;
-	letter-spacing: 20px;
+	font-size: 50px;
+	margin-top: 0;
+	opacity: 1;
+	font-family: 'Fredoka One', cursive;
 }
 
 form {
-	margin-top: 100px;
+	margin-top: 10px;
 }
 
 #zipcode {
 	border-radius: 10px;
-	font-size: 25px;
+	font-size: 20px;
 	color: #3f8fcc;
 	padding: 5px;
 	text-align: center;
-	width: 400px;
-	height: 60px;
+	width: 200px;
+	height: 40px;
 	margin: 0 15px;
 }
 
-.search-btn {
+.search-btn, .newSearch {
 	margin-left: 15px;
 	width: 200px;
-	height: 60px;
-	font-size: 25px;
+	height: 55px;
+	font-size: 20px;
 	background-color: #F5F5F5; 
 	color: #26a0da;
 	border-radius: 10px;
 	padding: 5px;
 	margin: 0 15px;
+	cursor: pointer;
 }
 
-
+.second {
+	margin-top: 200px;
+}
 
 
 
 /*********Main Page/Shows Weather and list activities********/
 #weather {
 	margin: 10px auto;
-	font-size: 18px;
 }
 
 #weather .logo {
@@ -95,7 +98,6 @@ form {
 	clear: both;
 	line-height: 2px;
 	margin: 35px;
-	color: #F5F5F5;
 }
 
 .image-icon {
@@ -104,13 +106,13 @@ form {
 
 .image-icon, 
 .location-info {
-	font-weight: bold;
 	font-size: 30px;
 	margin-top: 10px;
-	letter-spacing: 10px;
-	color: #F5F5F5;
 }
 
+.location-info{
+	font-weight: bold;
+}
 #weather .med {
 	font-size: 40px;
 }
@@ -123,7 +125,6 @@ form {
 	display: inline-block;
 	font-size:  25px;
 	margin: 0 20px;
-	letter-spacing: 5px;
 	padding: 5px;
 }
 
@@ -131,15 +132,6 @@ li:hover {
 	cursor: pointer;
 	font-weight: bold;
 }
-
-#textslide{
-	font-size: 80px;
-	margin-top: 100px;
-	color: #928DAB;
-}
-
-
-
 
 
 /*********Results Div and Maps Div********/
@@ -157,12 +149,12 @@ li:hover {
  #results {
  	overflow: auto;
 	font-size: 18px;
+	border: 1px solid #d1d3d6;
  }
 
 h2{
 	margin: 0;
 	font-size: 35px;
-	letter-spacing: 10px;
 	margin-top: 20px;
 }
 
@@ -172,34 +164,14 @@ a {
 }
 
 
-/*******************FOOTER AND SCROLLBAR**************/
+/*******************FOOTER**************/
 
 footer {
 	text-align: center;
 }
 
-.newsearch{
-	font-size: 40px;
-	bottom: 100px;
-}
-
-::-webkit-scrollbar {
-width: 12px;
-height: 12px;
-}
-
-::-webkit-scrollbar-track {
-border: 1px solid #26a0da;
-border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-background: #26a0da;  
-border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-background: #26a0da;  
+.newSearch {
+	margin: 100px 0;
 }
 
 

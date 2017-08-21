@@ -63,12 +63,12 @@
 
 	#weather .med {
 		float: none;
-		font-size: 40px;
+		font-size: 20px;
 	}
 
 	#weather .large {
 		float: none;
-		font-size: 55px;
+		font-size: 30px;
 		margin-top: 50px;
 	}
 
@@ -84,9 +84,13 @@
 	#activity-list ul li {
 	display: block;
 	font-size: 18px;
+	text-align: center;
 	}
 
-
+	#activity-list ul {
+		padding: 0;
+	}
+	
 	#results, #map {
 		width: 95%;
 		margin-top: 15px;
