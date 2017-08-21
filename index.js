@@ -88,7 +88,7 @@ var infowindow;
 		});
 
 		$("#activity-list").on('click', '.playgrounds', function(e){
-		activity= 'playground';
+		activity= 'playgrounds';
 		getActivities(activity);
 		});
 
