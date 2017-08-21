@@ -25,6 +25,7 @@ var map;
 var service;
 var error;
 var infowindow;
+var name;
 
 	$(document).ready(function(){
 		$('#form').submit(function(event){
@@ -32,12 +33,10 @@ var infowindow;
 
 			var query= $('#zipcode').val();
 			weatherSearch = 'https://api.wunderground.com/api/66932217fc7ece0f/conditions/q/'+query+'.json';
-			geoLookup = "https://api.wunderground.com/api/66932217fc7ece0f/geolookup/q/"+query+".json";
+			geoLookup = 'https://api.wunderground.com/api/66932217fc7ece0f/geolookup/q/'+query+'.json';
 			$('#weather, #activity-list').empty();
-			
-			getWeather(weatherSearch);
 
-			
+			getWeather(weatherSearch);
 		});	
 
 		$("footer").on('click', '.newSearch',function(e){
@@ -112,45 +111,45 @@ var infowindow;
 
 
 //*******************************************	
-	//Get Current Weather Conditions from weather underground and display
+	//Get Current Weather Conditions from weather underground and displays it on the page
 	function getWeather(weatherSearch){
 		$.getJSON(weatherSearch).done(function(data){
 
 		error = data.response.error;
 			if(error) {
-			alert("Invalid Zip Code");	
-			$('#zipcode').val('');
+				alert("Invalid Zip Code");	
+				$('#zipcode').val('');
 			}
 			else {
 				var currentTemp= data.current_observation.temp_f;
 				var location = data.current_observation.display_location.full;
 				var icon = data.current_observation.icon;
 				var weath= data.current_observation.weather;
-			$('#weather').append("<p class='logo med'>Find Something</p><p class='logo large'>Fun To Do Today</p>");
-			$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"alt="Image Icon for the current weather"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
+				$('#weather').append("<p class='logo med'>Find Something</p><p class='logo large'>Fun To Do Today</p>");
+				$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"alt="Image Icon for the current weather"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
 
-			var activitiesHTML = "<ul>";
-			for (var i = 0; i < weatherRules.length; i++) {
-				if(currentTemp >=weatherRules[i].min && currentTemp <weatherRules[i].max){
-					for (var j = 0; j < weatherRules[i].activities.length; j++) {
+				var activitiesHTML = "<ul>";
+				for (var i = 0; i < weatherRules.length; i++) {
+					if(currentTemp >=weatherRules[i].min && currentTemp <weatherRules[i].max){
+						for (var j = 0; j < weatherRules[i].activities.length; j++) {
 						activitiesHTML+= "<li class="+weatherRules[i].activities[j]+">"+weatherRules[i].activities[j]+"</li>";
+						}
 					}
 				}
+				activitiesHTML += "</ul>";
+
+				$('#activity-list').append(activitiesHTML);
+
+				$('#weather, #activity-list, #map, footer, .main, #results').css('display', 'block');
+				$('body').css('border', '10px solid #26a0da');
+				$('header').css('display','none');
+				getGeoCode();
 			}
-			activitiesHTML += "</ul>";
-
-			$('#activity-list').append(activitiesHTML);
-
-			$('#weather, #activity-list, #map, footer, .main, #results').css('display', 'block');
-			$('body').css('border', '10px solid #26a0da');
-			$('header').css('display','none');
-			getGeoCode();
-		}
 		 });	
 	}
 
 //*************************************************
-
+//Gets the geo code from the zip code entered and creates variables
 function getGeoCode() {
 	$.getJSON(geoLookup).done(function(data){
 		lat = data.location.lat;
@@ -159,7 +158,7 @@ function getGeoCode() {
 		});
 }
 
-var name;
+// after choosing from the list of activities display the list of places
 function getActivities(activity){
 	$('html, body').animate({
 	scrollTop: $("#results").offset().top -100
@@ -170,6 +169,7 @@ function getActivities(activity){
 	initialize();
 }
 
+//displays map of current location
 function initMap(lat,lon) {
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -192,6 +192,7 @@ function initMap(lat,lon) {
   	});
 };
 
+//shows the map of your current location
 function initialize() {
   var placeLocation = new google.maps.LatLng(lat,lon);
 
@@ -202,15 +203,17 @@ function initialize() {
 
   var request = {
     location: placeLocation,
-    radius: '100',
+    radius: 5,
     query: activity
   };
 
   service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
 }
+
 var string;
 var address;
+//display results from activities in the results div
 function callback(results, status) {
 	$('#results').css('display', 'block');
 	$('#results').html('<h2>'+activity+'</h2>');
@@ -228,6 +231,7 @@ function callback(results, status) {
   	}
 }
 
+//creates a marker for each place listed in results on the map
 function createMarker(place, address) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({

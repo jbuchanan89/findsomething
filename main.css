@@ -34,18 +34,17 @@ header {
 	height: 100vh;
 	width: 100%;
 	opacity: 0.8;
+	color: #000000;
 }
 
 
 header .med {
 	font-size: 30px;
-	color: #F5F5F5;
 	font-weight: normal;
 }
 
 
 h1 {
-	color: #26a0da;
 	font-weight: bold;
 	padding-top: 150px;
 	font-size: 50px;
