@@ -23,6 +23,7 @@ var googleAPI;
 var map;
 var map;
 var service;
+var error;
 var infowindow;
 
 	$(document).ready(function(){
@@ -35,11 +36,8 @@ var infowindow;
 			$('#weather, #activity-list').empty();
 			
 			getWeather(weatherSearch);
-			$('#weather, #activity-list, #map, footer, .main, #results').css('display', 'block');
-			$('body').css('border', '10px solid #26a0da');
-			$('header').css('display','none');
-			getGeoCode();
 
+			
 		});	
 
 		$("footer").on('click', '.newSearch',function(e){
@@ -117,11 +115,17 @@ var infowindow;
 	//Get Current Weather Conditions from weather underground and display
 	function getWeather(weatherSearch){
 		$.getJSON(weatherSearch).done(function(data){
-		var currentTemp= data.current_observation.temp_f;
-		var location = data.current_observation.display_location.full;
-		var icon = data.current_observation.icon;
-		var weath= data.current_observation.weather;
 
+		error = data.response.error;
+			if(error) {
+			alert("Invalid Zip Code");	
+			$('#zipcode').val('');
+			}
+			else {
+				var currentTemp= data.current_observation.temp_f;
+				var location = data.current_observation.display_location.full;
+				var icon = data.current_observation.icon;
+				var weath= data.current_observation.weather;
 			$('#weather').append("<p class='logo med'>Find Something</p><p class='logo large'>Fun To Do Today</p>");
 			$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"alt="Image Icon for the current weather"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
 
@@ -136,6 +140,12 @@ var infowindow;
 			activitiesHTML += "</ul>";
 
 			$('#activity-list').append(activitiesHTML);
+
+			$('#weather, #activity-list, #map, footer, .main, #results').css('display', 'block');
+			$('body').css('border', '10px solid #26a0da');
+			$('header').css('display','none');
+			getGeoCode();
+		}
 		 });	
 	}
 
@@ -229,7 +239,6 @@ function createMarker(place, address) {
   	});
 
 	google.maps.event.addListener(marker, 'click', function() {
-		 infoWindow.close();
     	service.getDetails(place, function(result, status) {
       		if (status !== google.maps.places.PlacesServiceStatus.OK) {
         		console.error(status);
