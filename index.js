@@ -1,13 +1,13 @@
 	var weatherRules = [
 		{
-			min: 85,
+			min: 82,
 			max: 1000,
 			activities: [
 			'beaches','pools', 'parks', 'museums', 'playgrounds', 'amusement park', 'water sports']
 		},
 		{
 			min: 0,
-			max: 85,
+			max: 82,
 			activities: [
 			'movies', 'bowling', 'roller skating', 'ice skating', 'museums', 'trampoline parks']
 		}
