@@ -34,6 +34,7 @@ header {
 	width: 100%;
 	opacity: 0.8;
 	color: #F5F5F5;
+	background-position: center -300px;
 }
 
 
@@ -118,11 +119,11 @@ form {
 }
 
 #weather .med {
-	font-size: 40px;
+	font-size: 35px;
 }
 
 #weather .large {
-	font-size: 55px;
+	font-size: 45px;
 }
 
 #activity-list ul li {
