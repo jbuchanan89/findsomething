@@ -4,12 +4,11 @@ body {
 	height: 100%;
 	font-family: 'PT Sans Caption', sans-serif;
 	margin: 0;
-	background: #efeff2;
+	background: #f5f5f5;
 	color: #26a0da;
 	text-transform: uppercase;
 	text-align: center;
 	box-sizing: border-box;
-
 }
 
 #weather, 
@@ -26,7 +25,7 @@ footer,
 header {
 	margin: 0;
 	text-align: center;
-	background: url("https://static.pexels.com/photos/5151/man-people-walking-park.jpg") no-repeat center center fixed; 
+	background: url("ocean.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -34,7 +33,7 @@ header {
 	height: 100vh;
 	width: 100%;
 	opacity: 0.8;
-	color: #000000;
+	color: #F5F5F5;
 }
 
 
@@ -64,15 +63,15 @@ form {
 	padding: 5px;
 	text-align: center;
 	width: 200px;
-	height: 40px;
+	height: 30px;
 	margin: 0 15px;
 }
 
 .search-btn, .newSearch {
 	margin-left: 15px;
-	width: 200px;
-	height: 55px;
-	font-size: 20px;
+	width: 150px;
+	height: 40px;
+	font-size: 18px;
 	background-color: #F5F5F5; 
 	color: #26a0da;
 	border-radius: 10px;
@@ -81,8 +80,12 @@ form {
 	cursor: pointer;
 }
 
+.newSearch{
+	width: 200px;
+	height: 40px;
+}
 .second {
-	margin-top: 200px;
+	margin-top: 100px;
 }
 
 
@@ -99,6 +102,10 @@ form {
 	margin: 35px;
 }
 
+.location-info {
+	color: #9da0a5;
+}
+
 .image-icon {
 		padding-top: 150px;
 }
@@ -109,9 +116,6 @@ form {
 	margin-top: 10px;
 }
 
-.location-info{
-	font-weight: bold;
-}
 #weather .med {
 	font-size: 40px;
 }
@@ -134,12 +138,14 @@ li:hover {
 
 
 /*********Results Div and Maps Div********/
-
+h3 {
+	color: #9da0a5;
+	padding: 0 18px;
+}
 #results, 
 #map{ 
 	height: 400px;
 	background-color: #F5F5F5;
-	color: #26a0da;
 	padding:0;
 	margin-left: 2.78%;
 	margin-top:40px;
@@ -151,6 +157,9 @@ li:hover {
 	border: 1px solid #d1d3d6;
  }
 
+.placeAddress {
+	color: #9da0a5;
+}
 h2{
 	margin: 0;
 	font-size: 35px;
@@ -171,6 +180,8 @@ footer {
 
 .newSearch {
 	margin: 100px 0;
+	background: #26a0da;
+	color: #F5F5F5;
 }
 
 

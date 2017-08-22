@@ -34,6 +34,16 @@
 	display: block;
 	}
 
+	.search-btn {
+	font-size: 20px;
+	margin: 20px auto;
+	width: 200px;
+	height: 50px;
+	display: block;
+	}
+
+
+
 /*********Main Page/Shows Weather and Results********/
 	.row {
 		width: 100%;
@@ -85,6 +95,9 @@
 		margin-top: 30px;
 	}
 
+	#results {
+		padding: 0 10px;
+	}
 	h2 {
 		font-size: 22px;
 	}

@@ -126,7 +126,7 @@ var name;
 				var icon = data.current_observation.icon;
 				var weath= data.current_observation.weather;
 				$('#weather').append("<p class='logo med'>Find Something</p><p class='logo large'>Fun To Do Today</p>");
-				$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"alt="Image Icon for the current weather"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ': ' + currentTemp +  '&#8457' );	
+				$('#weather').append('<p class="image-icon"><img class = "weather-icon" src="https://icons.wxug.com/i/c/i/'+icon+'.gif"alt="Image Icon for the current weather"><br>'+weath+'</br></p> <p class= "location-info">'+ location + ':  ' + currentTemp +  '&deg F' );	
 
 				var activitiesHTML = "<ul>";
 				for (var i = 0; i < weatherRules.length; i++) {
@@ -219,12 +219,11 @@ function callback(results, status) {
 	$('#results').html('<h2>'+activity+'</h2>');
   	if (status == google.maps.places.PlacesServiceStatus.OK) {
     	for (var i = 0; i < results.length; i++) {
-    		console.log(results[i]);
       		var place = results[i];
 			string = results[i].formatted_address;
 			address = string.replace(', United States', "");
 			createMarker(results[i], address);
-			var result = '<p><a href="https://www.google.com/maps/place/'+results[i].name+'/@'+results[i].geometry.location+'" target="_blank"><strong>'+results[i].name+'</strong><br>'+address+'<br>'+results[i].rating+' &#9733</p></a>';
+			var result = '<p><a href="https://www.google.com/maps/place/'+results[i].name+'/@'+results[i].geometry.location+'" target="_blank"><strong>'+results[i].name+'</strong><br><span class="placeAddress">'+address+'<br>'+results[i].rating+' &#9733</span></p></a>';
   			$("#results").append(result);
 
     	}
