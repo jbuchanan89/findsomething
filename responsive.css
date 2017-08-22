@@ -60,12 +60,12 @@
 		margin-bottom: 80px;
 	}
 
-	#find .med {
+	#weather .med {
 		float: none;
 		font-size: 20px;
 	}
 
-	#find .large {
+	#weather .large {
 		float: none;
 		font-size: 30px;
 		margin-top: 50px;
@@ -114,8 +114,8 @@
 			font-size: 12px;
 		}
 
-		#find .logo {
-			font-size: 30px;
+		#weather .logo {
+			font-size: 16px;
 			margin-top: 30px;
 		}
 

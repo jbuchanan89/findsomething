@@ -36,10 +36,12 @@ header {
 	color: #F5F5F5;
 }
 
+
 header .med {
 	font-size: 30px;
 	font-weight: normal;
 }
+
 
 h1 {
 	font-weight: bold;
@@ -82,7 +84,6 @@ form {
 	width: 200px;
 	height: 40px;
 }
-
 .second {
 	margin-top: 100px;
 }
@@ -90,34 +91,38 @@ form {
 
 
 /*********Main Page/Shows Weather and list activities********/
-
 #weather {
-	float: right;
+	margin: 10px auto;
 }
 
-#find .logo {
+#weather .logo {
 	float: left;
 	clear: both;
 	line-height: 2px;
 	margin: 35px;
 }
 
+.location-info {
+	color: #9da0a5;
+}
+
+.image-icon {
+		padding-top: 150px;
+		float: center;
+}
+
 .image-icon, 
 .location-info {
-	font-size: 25px;
+	font-size: 30px;
 	margin-top: 10px;
 }
 
-#find .med {
-	font-size: 30px;
+#weather .med {
+	font-size: 40px;
 }
 
-#find .large {
-	font-size: 45px;
-}
-
-#activity-list ul {
-	margin-top: 50px;
+#weather .large {
+	font-size: 55px;
 }
 
 #activity-list ul li {
@@ -155,7 +160,7 @@ h3 {
 
 .placeAddress {
 	color: #9da0a5;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 .rating {
@@ -185,10 +190,11 @@ footer {
 }
 
 .newSearch {
-	margin: 60px 0;
+	margin: 100px 0;
 	background: #26a0da;
 	color: #F5F5F5;
 }
+
 
 /*
 **********************GRID**************************************/
