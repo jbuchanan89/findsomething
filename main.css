@@ -91,37 +91,38 @@ form {
 
 
 /*********Main Page/Shows Weather and list activities********/
-#weather {
-	margin: 10px auto;
+.top {
+
 }
 
-#weather .logo {
+#weather {
+	float: right;
+}
+
+#find .logo {
 	float: left;
 	clear: both;
 	line-height: 2px;
 	margin: 35px;
 }
 
-.location-info {
-	color: #9da0a5;
-}
-
-.image-icon {
-		padding-top: 150px;
-}
 
 .image-icon, 
 .location-info {
-	font-size: 30px;
+	font-size: 25px;
 	margin-top: 10px;
 }
 
-#weather .med {
-	font-size: 40px;
+#find .med {
+	font-size: 30px;
 }
 
-#weather .large {
-	font-size: 55px;
+#find .large {
+	font-size: 45px;
+}
+
+#activity-list ul {
+	margin-top: 50px;
 }
 
 #activity-list ul li {
@@ -189,7 +190,7 @@ footer {
 }
 
 .newSearch {
-	margin: 100px 0;
+	margin: 60px 0;
 	background: #26a0da;
 	color: #F5F5F5;
 }
