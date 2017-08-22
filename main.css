@@ -159,7 +159,17 @@ h3 {
 
 .placeAddress {
 	color: #9da0a5;
+	font-size: 14px;
 }
+
+.rating {
+	color: #26a0da;
+}
+
+.star {
+	color: #FFD700;
+}
+
 h2{
 	margin: 0;
 	font-size: 35px;
