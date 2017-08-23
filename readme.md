@@ -9,3 +9,9 @@ Technology Used:
 - CSS
 - JavaScript
 - jQuery
+
+<p align="center">
+  <img src="Landing Page.PNG" width="350"/>
+  <img src="Weather.PNG" width="350"/>
+  <img src="results.PNG" width="350"/>
+</p>
